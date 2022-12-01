@@ -1,0 +1,35 @@
+{% extends 'master.twig' %}
+{% block bodyclass %}no-sidebar page single {{record.slug}} {% endblock bodyclass %}
+{% block banner %}{% endblock banner %}
+{% block main %}
+    <!-- Main Page Content and Sidebar -->
+    <!-- Main Blog Content -->
+            <div id="main" class="wrapper style4">
+
+                <!-- Content -->
+                <div id="content" class="container">
+                    <section>
+                        <header class="major">
+                            <h2>{{ record.title }}</h2>
+                            {% if record.blurb is defined and record.blurb is not empty %}
+                            <span class="byline">{{ record.blurb }}</span>
+                            {% endif %}
+                        </header>
+                        <p>{{ record.teaser }}</p>
+                        {% if record.image!="" %}
+                            <a href="{{ image(record.image) }}">
+                                <img src="{{ thumbnail(record.image, 740, 560) }}">
+                            </a>
+                        {% endif %}
+                        <p>{{ record.body }}</p>
+                        <p>{{ record.teaser }}</p>
+                        {# If there are repeaters, we should output them. #}
+                        {{ fields(common = false, extended = false, repeaters = true) }}
+                    </section>
+                </div>
+            </div>
+    <!-- End Main Content -->
+    <!-- Team -->
+    {% include '_team.twig' %}
+<!-- End Main Content and Sidebar -->
+{% endblock main %}

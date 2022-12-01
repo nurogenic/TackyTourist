@@ -1,0 +1,34 @@
+{% extends 'master.twig' %}
+
+{% block main %}
+
+    <!-- Main Blog Content -->
+    <div class="wrapper style2">
+        {% for page in records %}
+            <section class="container">
+                <div class="row">
+                    <div class="12u">
+                        <h3>{{ page.title }}</h3>
+                        <p>{{ page.teaser }}</p>
+                        <a href="{{ page.link }}" class="button">{{ page.slug }}</a>
+                    </div>
+                </div>
+            </section>
+        {% endfor %}
+
+            <section class="container">
+                <div class="row double">
+                    <div class="pager 10u">
+                            {{ pager('', 3, '_pagination.twig' ) }}
+                    </div>
+                </div>
+            </section>
+
+        
+
+    </div>
+
+    <!-- End Main Content -->
+    {% include '_team.twig' %}
+
+{% endblock main %}
